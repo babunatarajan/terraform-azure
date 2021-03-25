@@ -1,0 +1,3 @@
+.out.txt
+.terraform*
+terraform.tfstate*
