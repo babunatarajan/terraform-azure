@@ -1,12 +1,12 @@
 # terraform-azure
 Provisioning Azure resources using Terraform
 
-# Clone the repository and run init command to download the Azure provider/plugin for Terraform.
+## Clone the repository and run init command to download the Azure provider/plugin for Terraform.
 git clone https://github.com/babunatarajan/terraform-azure.git
 cd terraform-azure
 terraform init
 
-# The stack consists the following resources.
+## The stack consists the following resources.
 1. Virtual Network 10.0.110.0/25
 2. Subnet 10.0.110.0/27 for internal network
 3. Network security group for VM communication (80/TCP, 22/TCP, 443/TCP)
@@ -17,11 +17,11 @@ terraform init
 8. DNS Zone is nowhere used in the stack, if needed disable/remove the dns.tf file.
 9. MySQL - Adding now...
 
-# The vars.tf contains basic information, make sure you review and update the information before running terraform command.
+## The vars.tf contains basic information, make sure you review and update the information before running terraform command.
 e.g.  location, prefix and tags for environment and customer name
 
-# Launching the stack.
+## Launching the stack.
 terraform plan -out=.out.txt
 
-# Review the stack resources and run the following command provision the enivornment.
+## Review the stack resources and run the following command provision the enivornment.
 terraform apply ".out.txt"
