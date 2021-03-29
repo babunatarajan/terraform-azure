@@ -15,11 +15,11 @@ resource "azurerm_lb_backend_address_pool_address" "tfdemo-addr-pool" {
 # Allocate a Public IP
 resource "azurerm_public_ip" "external" {
   name                = "external"
-  location            = var.region
+  location            = azurerm_resource_group.tfdemo.location
   resource_group_name = azurerm_resource_group.tfdemo.name
   allocation_method   = "Static"
   sku                 = "Standard"
-  domain_name_label   = "${var.prefix}.mygrp.local"
+  domain_name_label   = "${var.prefix}-mygrp-local"
 
   tags = {
     Site        = "${var.prefix}.mygrp.local"
@@ -34,7 +34,7 @@ resource "azurerm_public_ip" "external" {
 
 resource "azurerm_lb" "tfdemo" {
   name                = "${var.prefix}-lb"
-  location            = var.region
+  location            = azurerm_resource_group.tfdemo.location
   sku                 = "Standard"
   resource_group_name = azurerm_resource_group.tfdemo.name
 
@@ -91,7 +91,7 @@ resource "azurerm_lb_rule" "tfdemo_https" {
 # Create a Network Security Group for Load Balancer 
 resource "azurerm_network_security_group" "tfdemo-lb-sg" {
   name                = "${var.prefix}-lb-sg"
-  location            = var.region
+  location            = azurerm_resource_group.tfdemo.location
   resource_group_name = azurerm_resource_group.tfdemo.name
 
   tags = {

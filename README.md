@@ -25,3 +25,4 @@ terraform plan -out=.out.txt
 
 ## Review the stack resources and run the following command provision the enivornment.
 terraform apply ".out.txt"
+
